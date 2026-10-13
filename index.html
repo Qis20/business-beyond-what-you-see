@@ -336,11 +336,10 @@
     gap: 14px;
     padding: 18px 18px;
   }
-  /* Same file and treatment as the header logo, cropped tight so it fills its box and sits centred */
-  .sm-logo {
-    width: 136px; height: auto; align-self: center; flex-shrink: 0;
-    filter: drop-shadow(0 4px 14px rgba(0,0,0,.35));
-  }
+  /* Logo files are cropped tight to the artwork, so it fills its box and sits centred.
+     Light mode uses the navy logo; dark mode swaps to the white header logo (see applyTheme). */
+  .sm-logo { width: 136px; height: auto; align-self: center; flex-shrink: 0; }
+  [data-theme="dark"] .sm-logo { filter: drop-shadow(0 4px 14px rgba(0,0,0,.35)); }
   @media (max-width: 900px) { .sm-logo { width: 150px; } }
   .sm-divider { width: 2px; align-self: stretch; background: var(--brand); border-radius: 1px; flex-shrink: 0; }
   .sm-col { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
@@ -855,7 +854,7 @@
 
     <!-- 1. Logo + Date & Time -->
     <div class="sidebar-card sidebar-meta">
-      <img src="Biz%20Logo%20Transparent.png" alt="Business Beyond What You See logo" class="sm-logo">
+      <img src="Sidebar%20Logo%20Navy.png" alt="Business Beyond What You See logo" class="sm-logo" id="sm-logo-img">
       <div class="sm-divider"></div>
       <div class="sm-col">
         <span class="sm-date">30<sup>th</sup> Oct 2026</span>
@@ -1093,7 +1092,7 @@
         <div class="acc-content">
           <div class="onboard-box">
             <p>If you haven't filled in and submitted your onboarding form yet, please take 3 minutes to complete it here. This helps our team get everything ready for you — from finalizing your corporate visit passes to taking care of your dietary arrangements and event logistics!</p>
-            <a href="https://forms.gle/3vQutSEQCoHxMcnMA" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-pulse">📝&nbsp; Fill in Onboarding Form</a>
+            <a href="https://forms.gle/fYb3xBPiEM6UoXEP6" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-pulse">📝&nbsp; Fill in Onboarding Form</a>
           </div>
         </div>
       </div>
@@ -1111,7 +1110,7 @@
         <div class="acc-content">
           <div class="dress-badge">
             <span class="dress-icon">👔</span>
-            <span><strong>Smart Casual</strong><br><span>Bring a jacket along as the room will be cold.</span></span>
+            <span><strong>Smart Casual</strong><br><span>Participants are to wear dark-coloured clothing.</span><br><span>Bring a jacket along as the room will be cold.</span></span>
           </div>
         </div>
       </div>
@@ -1134,11 +1133,9 @@
               <li class="agenda-step"><span class="agenda-time"></span><strong>Boarding Bus &amp; Context Setting</strong></li>
               <li class="agenda-step"><span class="agenda-time">8.30am</span><strong>Depart to GK Aqua (Port Dickson)</strong></li>
               <li class="agenda-step"><span class="agenda-time">10.00am</span><strong>GK Aqua Corporate Visit</strong></li>
-              <li class="agenda-step"><span class="agenda-time">11.30am</span><strong>Lunch</strong></li>
               <li class="agenda-step"><span class="agenda-time">1.00pm</span><strong>Depart to Barista Guild Asia</strong></li>
               <li class="agenda-step"><span class="agenda-time">3.00pm</span><strong>Barista Guild Asia Corporate Visit</strong></li>
               <li class="agenda-step"><span class="agenda-time">6.30pm</span><strong>Dinner &amp; Mastermind Session</strong></li>
-              <li class="agenda-step"><span class="agenda-time">9.30pm</span><strong>Depart Back to Menara EcoWorld</strong></li>
               <li class="agenda-step"><span class="agenda-time">10.30pm</span><strong>End of the Day</strong></li>
             </ol>
           </div>
@@ -1165,8 +1162,16 @@
             <div class="faq-a"><span class="faq-amark">A</span><span>The workshop will be conducted entirely in English, and no translation will be provided.</span></div>
           </div>
           <div class="faq-item">
-            <div class="faq-q"><span class="faq-qmark">Q</span><span>Is the workshop HRDC Claimable?</span></div>
-            <div class="faq-a"><span class="faq-amark">A</span><span>Yes. Business Beyond What You See is HRD Corp claimable under the HRD Corp training schemes, subject to your company's eligibility and levy balance.</span></div>
+            <div class="faq-q"><span class="faq-qmark">Q</span><span>What if I am running late?</span></div>
+            <div class="faq-a"><span class="faq-amark">A</span><span>Please inform us in the <strong>WhatsApp group</strong>. Late comers will need to self-arrange their transportation to the specific venue.</span></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q"><span class="faq-qmark">Q</span><span>Can I arrange my own transportation to each venue?</span></div>
+            <div class="faq-a"><span class="faq-amark">A</span><span>No. All participants must follow our schedule and travel on <strong>our bus for the whole trip</strong>, except for those who are late for registration.</span></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q"><span class="faq-qmark">Q</span><span>What should I do if there is an emergency?</span></div>
+            <div class="faq-a"><span class="faq-amark">A</span><span>If any emergency issue happens, please inform <strong>Melissa</strong> (the project PIC) immediately.</span></div>
           </div>
         </div>
       </div>
@@ -1275,6 +1280,7 @@
       optDark.classList.toggle('active', theme === 'dark');
       optLight.classList.toggle('active', theme === 'light');
       if (persist) { try { localStorage.setItem(STORAGE_KEY, theme); } catch (e) {} }
+      document.getElementById('sm-logo-img').src = (theme === 'dark') ? 'Biz%20Logo%20Transparent.png' : 'Sidebar%20Logo%20Navy.png';
     }
 
     var saved = null;
