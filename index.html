@@ -19,6 +19,7 @@
     --brand-light:   #fff0a0;
     --brand-xlight:  #fffbe3;
     --highlight:     #ffdf00;
+    --logo-gold:     #db9e1b;   /* sampled from the BEYOND lettering in the logo */
     --on-brand:      #0d0d0d;
     --navy:          #141518;
 
@@ -168,7 +169,7 @@
   .header::after {
     content: '';
     position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-    background: var(--highlight);
+    background: var(--logo-gold);
   }
   .header-inner {
     position: relative; z-index: 1;
@@ -199,7 +200,13 @@
     margin-bottom: 10px;
     color: #fff;
   }
-  .event-name span { color: var(--highlight); }
+  /* Metallic gold matching the logo's BEYOND lettering */
+  .event-name span {
+    color: var(--logo-gold);
+    background: linear-gradient(180deg, #f6c548 0%, #db9e1b 55%, #b97a14 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
   .tagline {
     font-size: clamp(.9rem, 2.1vw, 1.1rem);
     font-weight: 600; font-style: italic; letter-spacing: 1px;
@@ -208,7 +215,7 @@
   }
   .header-rule {
     width: 64px; height: 3px;
-    background: var(--highlight); margin: 0 auto 26px; border-radius: 2px;
+    background: var(--logo-gold); margin: 0 auto 26px; border-radius: 2px;
   }
   .header-meta {
     display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
@@ -216,7 +223,7 @@
   .meta-pill {
     display: flex; align-items: center; gap: 7px;
     font-size: calc(.9rem + 1px); color: rgba(255,255,255,.92);
-    background: rgba(255,255,255,.08); border: 1.5px solid var(--highlight);
+    background: rgba(255,255,255,.08); border: 1.5px solid var(--logo-gold);
     border-radius: 50px; padding: 7px 16px;
   }
   .meta-pill strong { color: #fff; font-weight: 700; }
