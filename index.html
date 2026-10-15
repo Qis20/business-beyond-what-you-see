@@ -10,16 +10,17 @@
 <style>
   /* ═══════════════════════════════════════════════════
      DESIGN TOKENS — LIGHT MODE
-     Brand: Primary #000000 · Secondary #FFDF00 · Accent #FFFFFF
+     Brand: Primary #000000 · Secondary #FFDF00 (toned to the logo's gold #DB9E1B) · Accent #FFFFFF
   ═══════════════════════════════════════════════════ */
   :root {
-    --brand:         #ffdf00;
-    --brand-dark:    #7d6400;
+    --brand:         #db9e1b;
+    --brand-dark:    #8a5d0b;
     --brand-darker:  #111214;
-    --brand-light:   #fff0a0;
-    --brand-xlight:  #fffbe3;
-    --highlight:     #ffdf00;
+    --brand-light:   #f3dca6;
+    --brand-xlight:  #fcf5e4;
+    --highlight:     #db9e1b;
     --logo-gold:     #db9e1b;   /* sampled from the BEYOND lettering in the logo */
+    --gold-grad:     linear-gradient(180deg, #f6c548 0%, #db9e1b 55%, #b97a14 100%);
     --on-brand:      #0d0d0d;
     --navy:          #141518;
 
@@ -43,11 +44,11 @@
      DESIGN TOKENS — DARK MODE
   ═══════════════════════════════════════════════════ */
   [data-theme="dark"] {
-    --brand:         #ffdf00;
-    --brand-dark:    #ffdf00;
-    --brand-darker:  #ffdf00;
-    --brand-light:   #4a4100;
-    --brand-xlight:  #2a2709;
+    --brand:         #db9e1b;
+    --brand-dark:    #db9e1b;
+    --brand-darker:  #db9e1b;
+    --brand-light:   #4a3610;
+    --brand-xlight:  #2a220e;
 
     --bg:            #111214;
     --surface:       #1b1c1f;
@@ -67,11 +68,11 @@
 
   @media (prefers-color-scheme: dark) {
     html:not([data-theme="light"]) {
-      --brand:         #ffdf00;
-      --brand-dark:    #ffdf00;
-      --brand-darker:  #ffdf00;
-      --brand-light:   #4a4100;
-      --brand-xlight:  #2a2709;
+      --brand:         #db9e1b;
+      --brand-dark:    #db9e1b;
+      --brand-darker:  #db9e1b;
+      --brand-light:   #4a3610;
+      --brand-xlight:  #2a220e;
       --bg:            #111214;
       --surface:       #1b1c1f;
       --surface-alt:   #24262a;
@@ -124,7 +125,7 @@
   }
   [data-theme="dark"] .theme-opt { color: #8b9099; }
   .theme-opt.active {
-    background: var(--navy); color: #ffdf00;
+    background: var(--navy); color: #db9e1b;
   }
   [data-theme="dark"] .theme-opt.active { background: #050506; }
   .theme-opt:hover:not(.active) { color: #4a4f58; }
@@ -142,12 +143,12 @@
     border: none;
     cursor: pointer; font-size: calc(1.2rem + 1px); font-weight: 700;
     display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 18px rgba(255,223,0,.4);
+    box-shadow: 0 4px 18px rgba(219,158,27,.4);
     opacity: 0; visibility: hidden; transform: translateY(10px);
     transition: opacity .25s, transform .25s, visibility .25s, box-shadow .2s;
   }
   #back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
-  #back-to-top:hover { box-shadow: 0 6px 24px rgba(255,223,0,.55); transform: translateY(-2px); }
+  #back-to-top:hover { box-shadow: 0 6px 24px rgba(219,158,27,.55); transform: translateY(-2px); }
 
   /* ═══════════════════════════════════════════════════
      HEADER
@@ -163,7 +164,7 @@
   .header::before {
     content: '';
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse 60% 45% at 50% 38%, rgba(255,223,0,.09), transparent 70%);
+    background: radial-gradient(ellipse 60% 45% at 50% 38%, rgba(219,158,27,.09), transparent 70%);
     pointer-events: none;
   }
   .header::after {
@@ -177,7 +178,7 @@
   }
   .event-badge {
     display: inline-block;
-    background: var(--brand);
+    background: var(--gold-grad);
     color: var(--on-brand);
     font-size: calc(.8rem + 1px); font-weight: 800; letter-spacing: 3px;
     text-transform: uppercase;
@@ -203,7 +204,7 @@
   /* Metallic gold matching the logo's BEYOND lettering */
   .event-name span {
     color: var(--logo-gold);
-    background: linear-gradient(180deg, #f6c548 0%, #db9e1b 55%, #b97a14 100%);
+    background: var(--gold-grad);
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -241,7 +242,7 @@
   .countdown-label {
     font-size: calc(.85rem + 1px); font-weight: 800;
     letter-spacing: 3.5px; text-transform: uppercase;
-    color: #ffdf00; margin-bottom: 20px;
+    color: #db9e1b; margin-bottom: 20px;
   }
   .countdown-boxes { display: flex; justify-content: center; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
   .cd-group { display: flex; flex-direction: column; align-items: center; gap: 10px; }
@@ -251,17 +252,17 @@
     width: clamp(36px, 8vw, 58px); height: clamp(48px, 10.5vw, 74px);
     background: #33373f;
     border: 1px solid #484d57;
-    border-bottom: 3px solid #ffdf00;
+    border-bottom: 3px solid #db9e1b;
     border-radius: 10px;
     font-size: calc(clamp(1.5rem, 5vw, 2.5rem) + 1px); font-weight: 800;
-    color: #ffdf00; line-height: 1;
+    color: #db9e1b; line-height: 1;
     font-variant-numeric: tabular-nums;
   }
   .cd-colon {
     align-self: center;
     margin-top: -24px;
     font-size: calc(1.8rem + 1px); font-weight: 800;
-    color: #ffdf00;
+    color: #db9e1b;
   }
   .cd-unit-label {
     font-size: calc(.8rem + 1px); font-weight: 700; letter-spacing: 2px;
@@ -381,7 +382,7 @@
     border-bottom: 3px solid var(--highlight);
     border-radius: 7px;
     display: flex; align-items: center; justify-content: center;
-    font-size: calc(1.2rem + 1px); font-weight: 800; color: #ffdf00;
+    font-size: calc(1.2rem + 1px); font-weight: 800; color: #db9e1b;
     font-variant-numeric: tabular-nums;
   }
   [data-theme="dark"] .mcd-digit { background: #2c2e33; }
@@ -569,8 +570,8 @@
     border: 1.5px solid var(--brand); font-weight: 700;
   }
   @keyframes btn-breathe {
-    0%, 100% { transform: scale(1); box-shadow: 0 4px 14px rgba(255,223,0,.3); }
-    50% { transform: scale(1.045); box-shadow: 0 6px 22px rgba(255,223,0,.5); }
+    0%, 100% { transform: scale(1); box-shadow: 0 4px 14px rgba(219,158,27,.3); }
+    50% { transform: scale(1.045); box-shadow: 0 6px 22px rgba(219,158,27,.5); }
   }
   .btn-pulse { animation: btn-breathe 2.2s ease-in-out infinite; }
   .btn-pulse:hover { animation-play-state: paused; }
@@ -777,7 +778,7 @@
   }
   .footer-btn {
     min-width: 200px; max-width: 360px; display: flex; align-items: center; justify-content: center; gap: 10px;
-    background: var(--navy); color: #ffdf00;
+    background: var(--navy); color: #db9e1b;
     font-family: 'Poppins', sans-serif; font-size: calc(1rem + 1px); font-weight: 700;
     padding: 16px 30px; border-radius: 50px; text-decoration: none; border: none;
     box-shadow: 0 4px 18px rgba(16,18,22,.25); transition: transform .15s, box-shadow .15s;
